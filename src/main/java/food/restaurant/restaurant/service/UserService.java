@@ -1,6 +1,5 @@
 package food.restaurant.restaurant.service;
 
-import food.restaurant.restaurant.exception.FoodNotFoundException;
 import food.restaurant.restaurant.exception.UserNotFoundException;
 import food.restaurant.restaurant.model.User;
 import food.restaurant.restaurant.repo.UserRepo;
