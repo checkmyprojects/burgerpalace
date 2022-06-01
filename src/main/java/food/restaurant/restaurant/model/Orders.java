@@ -5,6 +5,7 @@ import java.io.Serializable;
 import java.util.Set;
 
 @Entity
+@Table(name="orders")
 public class Orders implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,9 +19,9 @@ public class Orders implements Serializable {
     @ManyToMany (fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinTable(
             name = "food_orders",
-            joinColumns = @JoinColumn(name = "id_order"),
-            inverseJoinColumns = @JoinColumn(name = "id_food"))
-    @OrderBy("id DESC")
+            joinColumns = @JoinColumn(name = "order_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "food_id", referencedColumnName = "id"))
+    //@OrderBy("id DESC")
     private Set<Food> food;
 
     public Orders() {

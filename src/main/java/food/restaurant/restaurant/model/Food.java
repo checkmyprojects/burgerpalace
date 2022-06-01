@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name="food")
 public class Food implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,8 +19,8 @@ public class Food implements Serializable {
     private String alergies;
     private double price;
 
-    @ManyToMany (mappedBy = "orders")
-    private Set<Orders> order = new HashSet<>();
+    @ManyToMany (mappedBy = "food")
+    private Set<Orders> order;
 
     // prep time
     // time to the client
@@ -33,13 +34,22 @@ public class Food implements Serializable {
     public Food() {
     }
 
-    public Food(String name, String type, String ingredients, boolean vegan, String alergies, double price) {
+    public Food(String name, String type, String ingredients, boolean vegan, String alergies, double price, Set<Orders> order) {
         this.name = name;
         this.type = type;
         this.ingredients = ingredients;
         this.vegan = vegan;
         this.alergies = alergies;
         this.price = price;
+        this.order = order;
+    }
+
+    public Set<Orders> getOrder() {
+        return order;
+    }
+
+    public void setOrder(Set<Orders> order) {
+        this.order = order;
     }
 
     public Long getId() {
@@ -108,6 +118,7 @@ public class Food implements Serializable {
                 ", vegan=" + vegan +
                 ", alergies='" + alergies + '\'' +
                 ", price=" + price +
+                ", order=" + order +
                 '}';
     }
 }

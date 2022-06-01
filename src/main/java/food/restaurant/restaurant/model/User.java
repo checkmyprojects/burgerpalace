@@ -17,7 +17,7 @@ public class User implements Serializable {
     private String password;
     private String role = "ROLE_USER";
 
-    @OneToMany(mappedBy="order")
+    @OneToMany(mappedBy="user")
     private Set<Orders> order;
 
     public User() {
