@@ -2,6 +2,7 @@ package food.restaurant.restaurant.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 public class User implements Serializable {
@@ -16,16 +17,28 @@ public class User implements Serializable {
     private String password;
     private String role = "ROLE_USER";
 
+    @OneToMany(mappedBy="order")
+    private Set<Orders> order;
+
     public User() {
     }
 
-    public User(String name, String address, String email, String phone, String password, String role) {
+    public User(String name, String address, String email, String phone, String password, String role, Set<Orders> order) {
         this.name = name;
         this.address = address;
         this.email = email;
         this.phone = phone;
         this.password = password;
         this.role = role;
+        this.order = order;
+    }
+
+    public Set<Orders> getOrder() {
+        return order;
+    }
+
+    public void setOrder(Set<Orders> order) {
+        this.order = order;
     }
 
     public Long getId() {
@@ -94,6 +107,7 @@ public class User implements Serializable {
                 ", phone='" + phone + '\'' +
                 ", password='" + password + '\'' +
                 ", role='" + role + '\'' +
+                ", order=" + order +
                 '}';
     }
 }

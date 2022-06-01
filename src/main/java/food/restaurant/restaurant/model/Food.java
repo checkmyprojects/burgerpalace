@@ -2,6 +2,8 @@ package food.restaurant.restaurant.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Food implements Serializable {
@@ -15,6 +17,9 @@ public class Food implements Serializable {
     private boolean vegan;
     private String alergies;
     private double price;
+
+    @ManyToMany (mappedBy = "orders")
+    private Set<Orders> order = new HashSet<>();
 
     // prep time
     // time to the client
