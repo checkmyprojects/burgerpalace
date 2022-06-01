@@ -21,7 +21,7 @@ public class Food implements Serializable {
 
     // numero de pedido -> varios platos
 
-    // 1 numero de pedido onetomany platos(varios)
+    // 1 numero de pedido onetomany platos (varios)
     // 1 cliente onetomany num_pedido (varios)
     // varias comidas
 
