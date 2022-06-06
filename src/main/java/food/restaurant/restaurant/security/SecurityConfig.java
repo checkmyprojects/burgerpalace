@@ -37,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
         http
                 .csrf()
-                .ignoringAntMatchers("/food/edit/add**")
+                .ignoringAntMatchers("/food/edit/add**", "/user/**")
                 .and()
                 .authorizeRequests()
                 .antMatchers("/", "/food/**", "/food/edit/add**", "/user/**").permitAll()

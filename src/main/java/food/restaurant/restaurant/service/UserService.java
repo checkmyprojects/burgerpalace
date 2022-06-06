@@ -4,16 +4,22 @@ import food.restaurant.restaurant.exception.UserNotFoundException;
 import food.restaurant.restaurant.model.User;
 import food.restaurant.restaurant.repo.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
-@Transactional
+
 public class UserService {
 
     private final UserRepo userRepo;
+
+    @Lazy
+    @Autowired
+    BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
     public UserService(UserRepo userRepo){
@@ -21,6 +27,8 @@ public class UserService {
     }
 
     public User addUser(User user){
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepo.save(user);
     }
 
@@ -29,6 +37,8 @@ public class UserService {
     }
 
     public User updateUser(User user){
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepo.save(user);
     }
 

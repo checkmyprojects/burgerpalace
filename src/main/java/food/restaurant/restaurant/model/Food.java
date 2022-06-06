@@ -18,6 +18,7 @@ public class Food implements Serializable {
     private boolean vegan;
     private String alergies;
     private double price;
+    private String img;
 
     @ManyToMany (mappedBy = "food")
     private Set<Orders> order;
@@ -34,13 +35,14 @@ public class Food implements Serializable {
     public Food() {
     }
 
-    public Food(String name, String type, String ingredients, boolean vegan, String alergies, double price, Set<Orders> order) {
+    public Food(String name, String type, String ingredients, boolean vegan, String alergies, double price, String img, Set<Orders> order) {
         this.name = name;
         this.type = type;
         this.ingredients = ingredients;
         this.vegan = vegan;
         this.alergies = alergies;
         this.price = price;
+        this.img = img;
         this.order = order;
     }
 
@@ -108,6 +110,14 @@ public class Food implements Serializable {
         this.price = price;
     }
 
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
+    }
+
     @Override
     public String toString() {
         return "Food{" +
@@ -118,6 +128,7 @@ public class Food implements Serializable {
                 ", vegan=" + vegan +
                 ", alergies='" + alergies + '\'' +
                 ", price=" + price +
+                ", img='" + img + '\'' +
                 ", order=" + order +
                 '}';
     }
