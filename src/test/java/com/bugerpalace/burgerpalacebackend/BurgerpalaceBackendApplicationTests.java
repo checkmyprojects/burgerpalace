@@ -1,10 +1,10 @@
-package food.restaurant.restaurant;
+package com.bugerpalace.burgerpalacebackend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RestaurantApplicationTests {
+class BurgerpalaceBackendApplicationTests {
 
     @Test
     void contextLoads() {

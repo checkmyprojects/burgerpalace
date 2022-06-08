@@ -1,12 +1,10 @@
-package food.restaurant.restaurant.repo;
+package com.bugerpalace.burgerpalacebackend.repo;
 
-import food.restaurant.restaurant.model.Food;
+import com.bugerpalace.burgerpalacebackend.domain.Food;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-@Repository
 public interface FoodRepo extends JpaRepository<Food, Long> {
 
     void deleteFoodById(Long id);
